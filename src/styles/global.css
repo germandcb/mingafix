@@ -117,7 +117,7 @@
   --color-cream: #EFEBE5;
   --color-beige: #FAF6EE;
 
-  --font-nunito-sans: 'Nunito Sans', sans-serif;
+  --font-nunito: 'Nunito Variable', sans-serif;
 }
 
 @layer base {
@@ -125,6 +125,14 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground font-nunito-sans;
+    @apply bg-background text-foreground font-nunito;
   }
+}
+
+.container {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+p {
+  @apply text-lg font-nunito;
 }

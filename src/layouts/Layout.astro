@@ -1,5 +1,7 @@
 ---
-import '../styles/global.css';
+// Supports weights 200-900
+import '@fontsource-variable/nunito';
+import '@/styles/global.css';
 const { content } = Astro.props;
 ---
 
@@ -8,9 +10,9 @@ const { content } = Astro.props;
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<title>{content.title}</title>
+		<title>MingaFix</title>
 	</head>
-	<body>
+	<body class="bg-linear-to-r from-cream to-beige">
 		<slot />
 	</body>
 </html>

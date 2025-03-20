@@ -1,25 +1,28 @@
 ---
+import Layout from '@/layouts/Layout.astro';
 import '../styles/global.css';
-// Component Imports
-import Button from '../components/Button.astro';
-
-// Full Astro Component Syntax:
-// https://docs.astro.build/basics/astro-components/
+import { Button } from '@/components/ui/button';
 ---
+<Layout> 
+	<main class="container">
+		<section class="text-center my-32">
+			<h1 class="text-8xl font-nunito font-extrabold">
+				<span class="text-navy">Minga</span><span class="text-gold">Fix</span>
+			</h1>
+			<p class="mx-auto max-w-5xl mt-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde voluptatum iure quas officiis! Consequatur, assumenda laudantium cumque, voluptas, iure animi esse alias nesciunt vitae porro dolor distinctio ratione dolores incidunt.</p>
+			<Button className='font-nunito rounded-full mt-8 text-xl' size={'lg'} >
+				Iniciar sesión con Google
+			</Button>
+		</section>
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro + TailwindCSS</title>
-	</head>
-
-	<body>
-		<div class="grid place-items-center h-screen content-center">
-			<Button>Tailwind Button in Astro!</Button>
-			<a href="/markdown-page" class="p-4 underline">Markdown is also supported...</a>
-		</div>
-	</body>
-</html>
+		<section class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center justify-items-center my-32">
+			<div>
+				<img class="w-fit aspect-auto rounded-md" src="/dashboard.jpg" loading="lazy" alt="Imagen Dashboard de la web">
+			</div>
+			<div>
+				<h2 class="text-5xl font-nunito font-bold text-navy">Proposito de la web</h2>
+				<p class="mt-5">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusantium consectetur voluptatem soluta dignissimos, beatae recusandae nulla quas ipsum aliquid! Eum, accusamus repellendus sit ipsa dicta aspernatur in officia odit magnam.</p>
+			</div>
+		</section>
+	</main>
+</Layout>
