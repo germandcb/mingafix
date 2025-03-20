@@ -110,11 +110,21 @@
   --color-sidebar-ring: var(--sidebar-ring);
 }
 
+@theme { 
+  --color-gold: #C8A44C;
+  --color-navy: #1D2849;
+  --color-blue: #123061;
+  --color-cream: #EFEBE5;
+  --color-beige: #FAF6EE;
+
+  --font-nunito-sans: 'Nunito Sans', sans-serif;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-nunito-sans;
   }
 }
