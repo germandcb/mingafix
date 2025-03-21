@@ -2,6 +2,7 @@
 // Supports weights 200-900
 import '@fontsource-variable/nunito';
 import '@/styles/global.css';
+import Page from '@/components/dashboard/page';
 ---
 
 <html lang="es">
@@ -12,6 +13,8 @@ import '@/styles/global.css';
 		<title>MingaFix</title>
 	</head>
 	<body class="bg-linear-to-r from-cream to-beige">
-		<slot />
+		<Page client:load>
+			<slot />
+		</Page>
 	</body>
 </html>
