@@ -33,7 +33,7 @@ export default function Page(props: Props) {
             <Breadcrumb>
               <BreadcrumbList>
                 <BreadcrumbItem className="hidden md:block">
-                  <BreadcrumbLink href="#">
+                  <BreadcrumbLink href="/dashboard">
                   MingaFix
                   </BreadcrumbLink>
                 </BreadcrumbItem>
