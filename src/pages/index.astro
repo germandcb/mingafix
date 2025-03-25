@@ -2,6 +2,15 @@
 import Layout from '@/layouts/Layout.astro';
 import '../styles/global.css';
 import { Button } from '@/components/ui/button';
+
+import { SignIn, SignOut } from 'auth-astro/components'
+import { getSession } from 'auth-astro/server'
+
+const session = await getSession(Astro.request);
+
+if (session) {
+	return Astro.redirect('/dashboard');
+}
 ---
 <Layout> 
 	<main class="container">
@@ -10,9 +19,11 @@ import { Button } from '@/components/ui/button';
 				<span class="text-navy">Minga</span><span class="text-gold">Fix</span>
 			</h1>
 			<p class="mx-auto max-w-5xl mt-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde voluptatum iure quas officiis! Consequatur, assumenda laudantium cumque, voluptas, iure animi esse alias nesciunt vitae porro dolor distinctio ratione dolores incidunt.</p>
-			<Button className='font-nunito rounded-full mt-8 text-xl' size={'lg'} >
-				Iniciar sesión con Google
-			</Button>
+			<SignIn provider="google">
+				<span class='font-nunito block bg-navy px-6 py-2 text-white cursor-pointer hover:bg-navy/90 transition-all rounded-full mt-8 text-xl'>
+					Iniciar sesión con Google
+				<span/>
+			</SignIn>
 		</section>
 
 		<section class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center justify-items-center my-32">

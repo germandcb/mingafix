@@ -1,5 +1,15 @@
 ---
 import LayoutUser from "@/layouts/LayoutUser.astro";
+
+import { getSession } from 'auth-astro/server'
+
+const session = await getSession(Astro.request)
+
+if (!session) {
+	return Astro.redirect('/');
+}
+
+import { SignIn, SignOut } from 'auth-astro/components'
 ---
 
 <LayoutUser>
@@ -24,6 +34,7 @@ import LayoutUser from "@/layouts/LayoutUser.astro";
         <p>Número de voluntarios</p>
       </div>
     </div>
+    <SignOut>Cerrar sessió</SignOut>
     <div class="min-h-[100vh] flex-1 rounded-xl bg-muted/50 md:min-h-min"></div>
   </div>
 </LayoutUser>
