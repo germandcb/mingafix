@@ -1,13 +1,21 @@
-# Astro with Tailwind
+# MingaFix
 
-```sh
-pnpm create astro@latest -- --template with-tailwindcss
-```
+![MingaFix Logo](https://github.com/germandcb/mingafix/blob/main/public/favicon.svg) <!-- Replace with the actual logo URL -->
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/with-tailwindcss)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/with-tailwindcss)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/with-tailwindcss/devcontainer.json)
+## Objetivo
 
-Astro comes with [Tailwind](https://tailwindcss.com) support out of the box. This example showcases how to style your Astro project with Tailwind.
+MingaFix es un sistema de información diseñado para que los usuarios puedan reportar daños en sus respectivas áreas locales. Además, permite a los usuarios ofrecerse como voluntarios para resolver los daños y afectaciones reportadas, fomentando la colaboración comunitaria.
 
-For complete setup instructions, please see our [Tailwind Integration Guide](https://docs.astro.build/en/guides/integrations-guide/tailwind).
+## Herramientas Utilizadas
+
+Este proyecto utiliza las siguientes herramientas y tecnologías:
+
+- **[Astro](https://astro.build/):** Framework moderno para construir sitios web rápidos.
+- **[Tailwind CSS](https://tailwindcss.com/):** Framework de utilidades para estilizar la interfaz de usuario.
+- **[React](https://reactjs.org/):** Biblioteca para construir interfaces de usuario.
+- **[Radix UI](https://www.radix-ui.com/):** Componentes accesibles y estilizados para React.
+- **[Auth.js](https://authjs.dev/):** Solución de autenticación para aplicaciones modernas.
+- **[Canvas Confetti](https://github.com/catdad/canvas-confetti):** Biblioteca para efectos visuales de confeti.
+- **[Lucide Icons](https://lucide.dev/):** Conjunto de íconos modernos y personalizables.
+- **[Tailwind Merge](https://github.com/dcastil/tailwind-merge):** Utilidad para combinar clases de Tailwind CSS.
+- **[tw-animate-css](https://github.com/benface/tw-animate-css):** Animaciones predefinidas para Tailwind CSS.
