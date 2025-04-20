@@ -1,6 +1,6 @@
 import { defineAction } from "astro:actions";
 import { z } from "astro:schema";
-import { createUserWithEmailAndPassword, type AuthError } from "firebase/auth";
+import { createUserWithEmailAndPassword, sendEmailVerification, updateProfile, type AuthError } from "firebase/auth";
 import { firebase } from "@/firebase/config";
 
 export const registerUser = defineAction({
@@ -30,19 +30,29 @@ export const registerUser = defineAction({
 
         try {
             const user = await createUserWithEmailAndPassword(
-                firebase.auth, 
-                email, 
+                firebase.auth,
+                email,
                 password
             );
 
-            
+            // Agregar nombre al perfil de usuario
+            updateProfile(firebase.auth.currentUser!, {
+                displayName: name
+            })
+
+            // Verificar correo
+            await sendEmailVerification(firebase.auth.currentUser!, {
+                url: 'http://localhost:4321/dashboard',
+            });
+
+
 
             return { ok: true, message: "Usuario creado correctamente" };
         } catch (error) {
 
             const firebaseError = error as AuthError;
 
-            if ( firebaseError.code === "auth/email-already-in-use") {
+            if (firebaseError.code === "auth/email-already-in-use") {
                 throw new Error("El correo ya esta en uso");
             }
         }
