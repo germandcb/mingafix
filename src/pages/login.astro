@@ -66,6 +66,16 @@ const rememberMe = !!email;
             >
               Iniciar sesión
             </button>
+
+            <div class="my-2 border-1 border-gray-600 " />
+
+            <button
+              type="button"
+              id="btn-google"
+              class="disabled:bg-gray-300 w-full flex justify-center bg-red-400 hover:bg-red-500 text-gray-100 p-3 rounded-full tracking-wide font-semibold shadow-lg cursor-pointer transition ease-in duration-500"
+            >
+              Iniciar sesión con Google
+            </button>
           </div>
         </form>
       </div>
@@ -74,11 +84,45 @@ const rememberMe = !!email;
 </AuthLayout>
 
 <script>
-  import { actions } from "astro:actions";
+  import { firebase } from "@/firebase/config";
+import { actions } from "astro:actions";
+  import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
   import Swal from "sweetalert2";
 
   const form = document.querySelector("form") as HTMLFormElement;
   const btnSubmit = document.querySelector("#btn-submit") as HTMLButtonElement;
+
+  const btnSubmitGoogle = document.querySelector("#btn-google") as HTMLButtonElement;
+
+  btnSubmitGoogle.addEventListener("click", async (e) => {
+    
+    btnSubmitGoogle.setAttribute("disabled", "disable");
+    const provider = new GoogleAuthProvider();
+
+    try { 
+      const credentials = await signInWithPopup( firebase.auth, provider);
+
+      const { error } = await actions.loginWithGoogle(credentials);
+
+      if ( error ) { 
+        Swal.fire({
+          icon: 'error',
+          title: 'Error al iniciar sesión con Google',
+          text: 'Por favor intenta nuevamente',
+        })
+        console.log(error)
+        btnSubmitGoogle.removeAttribute("disabled");
+        return;
+      }
+
+      btnSubmitGoogle.innerText = "Redireccionando...";
+      window.location.replace("/dashboard");
+      
+    } catch (error) { 
+      console.log(error)
+      btnSubmitGoogle.removeAttribute("disabled");
+    }
+  })
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -101,4 +145,6 @@ const rememberMe = !!email;
 
     window.location.replace("/dashboard");
   });
+
+  
 </script>
