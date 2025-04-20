@@ -2,7 +2,6 @@
 import { defineConfig } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
 
-import auth from "auth-astro";
 import db from "@astrojs/db";
 import cloudflare from "@astrojs/cloudflare";
 
@@ -13,5 +12,5 @@ export default defineConfig({
   },
   output: "server",
   adapter: cloudflare(),
-  integrations: [auth(), db()],
+  integrations: [db()],
 });
