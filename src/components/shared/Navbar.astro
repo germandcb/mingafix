@@ -1,5 +1,7 @@
 ---
 import MingaFix from "../icons/MingaFix.astro";
+
+const { isLoggedIn } = Astro.locals;
 ---
 
 <!-- component -->
@@ -15,12 +17,18 @@ import MingaFix from "../icons/MingaFix.astro";
       <li class="font-semibold text-gray-700">
         <a href="/dashboard">Dashboard</a>
       </li>
-      <li class="font-semibold text-gray-700">
-        <a href="/login">Ingresar</a>
-      </li>
-      <li id="logout" class="font-semibold text-gray-700">
-        <a href="#">Salir</a>
-      </li>
+
+      {
+        !isLoggedIn ? (
+          <li class="font-semibold text-gray-700">
+            <a href="/login">Ingresar</a>
+          </li>
+        ) : (
+          <li id="logout" class="font-semibold text-gray-700">
+            <a href="#">Salir</a>
+          </li>
+        )
+      }
       <li>
         <svg
           xmlns="http://www.w3.org/2000/svg"
