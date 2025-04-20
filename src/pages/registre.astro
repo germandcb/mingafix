@@ -1,7 +1,7 @@
 ---
 import AuthLayout from "@/layouts/AuthLayout.astro";
 
-const email = Astro.cookies.get("email")?.value ?? '';
+const email = Astro.cookies.get("email")?.value ?? "";
 const rememberMe = !!email;
 ---
 
@@ -83,9 +83,8 @@ const rememberMe = !!email;
 </AuthLayout>
 
 <script>
-import { actions } from "astro:actions";
-import Swal from "sweetalert2";
-
+  import { actions } from "astro:actions";
+  import Swal from "sweetalert2";
 
   const form = document.querySelector("form") as HTMLFormElement;
   const btnSubmit = document.querySelector("#btn-submit") as HTMLButtonElement;
@@ -95,7 +94,6 @@ import Swal from "sweetalert2";
     btnSubmit.setAttribute("disabled", "disabled");
 
     const formData = new FormData(form);
-
 
     const { error, data } = await actions.registerUser(formData);
 
@@ -107,9 +105,8 @@ import Swal from "sweetalert2";
       });
       btnSubmit.removeAttribute("disabled");
       return;
-    } 
+    }
 
     window.location.replace("/dashboard");
-
   });
 </script>
