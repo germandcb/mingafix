@@ -2,7 +2,12 @@
 // Supports weights 200-900
 import '@fontsource-variable/nunito';
 import '@/styles/global.css';
-import Page from '@/components/dashboard/page';
+
+interface Props {
+	title?: string
+}
+
+const { title = 'Minga Fix' } = Astro.props;
 ---
 
 <html lang="es">
@@ -10,11 +15,9 @@ import Page from '@/components/dashboard/page';
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<title>MingaFix</title>
+		<title>{title}</title>
 	</head>
 	<body class="bg-linear-to-r from-cream to-beige">
-		<Page client:load>
-			<slot />
-		</Page>
+		<slot />
 	</body>
 </html>

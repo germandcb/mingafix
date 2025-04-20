@@ -2,8 +2,6 @@
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 
-import react from '@astrojs/react';
-
 import node from '@astrojs/node';
 
 import auth from 'auth-astro';
@@ -18,9 +16,9 @@ export default defineConfig({
 
   output: 'server',
 
-  integrations: [react(), auth(), db()],
-
   adapter: node({
-    mode: 'standalone'
-  })
+    mode: 'standalone',
+  }),
+
+  integrations: [ auth(), db()],
 });

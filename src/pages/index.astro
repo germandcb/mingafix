@@ -1,52 +1,8 @@
 ---
-import Layout from '@/layouts/Layout.astro';
-import '../styles/global.css';
-import { Button } from '@/components/ui/button';
+import MainLayout from "@/layouts/MainLayout.astro";
 
-import { SignIn, SignOut } from 'auth-astro/components'
-import { getSession } from 'auth-astro/server'
 
-const session = await getSession(Astro.request);
-
-if (session) {
-	return Astro.redirect('/dashboard');
-}
 ---
-<Layout> 
-	<main class="container">
-		<section class="text-center my-32">
-			<h1 class="text-8xl font-nunito font-extrabold">
-				<span class="text-navy">Minga</span><span class="text-gold">Fix</span>
-			</h1>
-			<p class="mx-auto max-w-5xl mt-5">Una plataforma que facilita la colaboración ciudadana en tiempos de crisis. Aquí puedes reportar daños en tu comunidad, postularte como voluntario para brindar apoyo y dar seguimiento a los incidentes reportados en tu sector.</p>
-			<SignIn provider="google">
-				<span class='font-nunito block bg-navy px-6 py-2 text-white cursor-pointer hover:bg-navy/90 transition-all rounded-full mt-8 text-xl'>
-					Inicia sesión con tu cuenta de Google
-				<span/>
-			</SignIn>
-		</section>
+<MainLayout >
 
-		<section class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center justify-items-center my-32">
-			<div>
-				<img class="w-fit aspect-auto rounded-md" src="/dashboard.jpg" loading="lazy" alt="Imagen Dashboard de la web">
-			</div>
-			<div>
-				<h2 class="text-5xl font-nunito font-bold text-navy">¿Por qué utilizarla?</h2>
-				<ul class="list-image-[url(data:image/svg+xml,%3Csvg%20%20xmlns=%22http://www.w3.org/2000/svg%22%20%20width=%2224%22%20%20height=%2224%22%20%20viewBox=%220%200%2024%2024%22%20%20fill=%22none%22%20%20stroke=%22currentColor%22%20%20stroke-width=%222%22%20%20stroke-linecap=%22round%22%20%20stroke-linejoin=%22round%22%20%20class=%22icon%20icon-tabler%20icons-tabler-outline%20icon-tabler-check%22%3E%3Cpath%20stroke=%22none%22%20d=%22M0%200h24v24H0z%22%20fill=%22none%22/%3E%3Cpath%20d=%22M5%2012l5%205l10%20-10%22%20/%3E%3C/svg%3E)] mt-5 list-inside">
-					<li>
-						<strong class="text-xl font-nunito font-bold">Conexión con voluntarios</strong>
-						<p class="text-lg">Si necesitas ayuda o quieres contribuir, nuestra plataforma te conecta con personas dispuestas a colaborar en momentos de crisis.</p>
-					</li>
-					<li>
-						<strong class="text-xl font-nunito font-bold">Fortalecimiento de la comunidad</strong>
-						<p class="text-lg">Al unir esfuerzos, promovemos la solidaridad y creamos un entorno más seguro y resiliente para todos.</p>
-					</li>
-					<li>
-						<strong class="text-xl font-nunito font-bold">Fácil de usar</strong>
-						<p class="text-lg">Nuestra plataforma es intuitiva y accesible, diseñada para que cualquier persona pueda participar sin complicaciones.</p>
-					</li>
-				</ul>
-			</div>
-		</section>
-	</main>
-</Layout>
+</MainLayout>
