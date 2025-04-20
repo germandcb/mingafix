@@ -5,9 +5,7 @@ import MainLayout from "@/layouts/MainLayout.astro";
 const firebaseUser = firebase.auth.currentUser;
 
 if (firebaseUser === null) {
-  return {
-    redirect: "/login",
-  };
+  return Astro.redirect("/login",);
 }
 
 const { displayName, email, photoURL } = firebaseUser;
