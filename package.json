@@ -9,8 +9,8 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/cloudflare": "^12.5.0",
     "@astrojs/db": "^0.14.8",
-    "@astrojs/node": "^9.1.3",
     "@auth/core": "^0.37.4",
     "@fontsource-variable/nunito": "^5.2.5",
     "@tailwindcss/vite": "^4.0.12",
@@ -19,7 +19,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "tailwind-merge": "^3.0.2",
-    "tailwindcss": "^4.0.12",
+    "tailwindcss": "^4.1.4",
     "tw-animate-css": "^1.2.4"
   }
 }

@@ -2,11 +2,9 @@
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 
-import node from '@astrojs/node';
-
 import auth from 'auth-astro';
-
 import db from '@astrojs/db';
+import cloudflare from '@astrojs/cloudflare';
 
 // https://astro.build/config
 export default defineConfig({
@@ -15,10 +13,6 @@ export default defineConfig({
     },
 
   output: 'server',
-
-  adapter: node({
-    mode: 'standalone',
-  }),
-
+  adapter: cloudflare(),
   integrations: [ auth(), db()],
 });
