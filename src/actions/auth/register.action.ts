@@ -42,7 +42,7 @@ export const registerUser = defineAction({
 
             // Verificar correo
             await sendEmailVerification(firebase.auth.currentUser!, {
-                url: 'http://localhost:4321/dashboard',
+                url: 'http://localhost:4321/profile',
             });
 
 

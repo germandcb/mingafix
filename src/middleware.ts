@@ -2,7 +2,7 @@ import type { MiddlewareNext } from "astro";
 import { defineMiddleware } from "astro:middleware";
 import { firebase } from "./firebase/config";
 
-const privateRoutes = ["/dashboard"];
+const privateRoutes = ["/profile", "/profile/reposts"];
 const notAuthenticatedRoutes = ["/login", "/register", "/home"];
 
 // `context` and `next` are automatically typed
