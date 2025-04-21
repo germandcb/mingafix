@@ -22,8 +22,17 @@ const { isLoggedIn } = Astro.locals;
               <a href="/login">Ingresar</a>
             </li>
           ) : (
+          <li class="font-semibold text-gray-700">
+              <a href="/reports">Colaborar</a>
+            </li>
             <li class="font-semibold text-gray-700">
-              <a href="/dashboard">Dashboard</a>
+              <a href="/reports/report">Haz Un Reporte</a>
+            </li>
+            <li class="font-semibold text-gray-700">
+              <a href="/profile/reports">Mis Reportes</a>
+            </li>
+            <li class="font-semibold text-gray-700">
+              <a href="/profile">Perfil</a>
             </li>
             <li id="logout" class="font-semibold text-gray-700">
               <a href="#">Salir</a>
