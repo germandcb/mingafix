@@ -11,12 +11,12 @@ const rememberMe = !!email;
       <div class="p-12 bg-white mx-auto rounded-2xl w-100">
         <div class="mb-4">
           <h3 class="font-semibold text-2xl text-gray-800">
-            Iniciar Sesión<nav></nav>
+            Iniciar Sesión o Registrarse<nav></nav>
           </h3>
-          <p class="text-gray-500">Inicia sesión en MingaFix.</p>
+          <p class="text-gray-500">Inicia sesión o registrese con una cuenta de Google</p>
         </div>
         <form class="space-y-5">
-          <div class="space-y-2">
+          <!-- <div class="space-y-2">
             <label class="text-sm font-medium text-gray-700 tracking-wide"
               >Email</label
             >
@@ -57,9 +57,9 @@ const rememberMe = !!email;
                 ¿No tienes cuenta?
               </a>
             </div>
-          </div>
+          </div> -->
           <div>
-            <button
+            <!-- <button
               type="submit"
               id="btn-submit"
               class="disabled:bg-gray-300 w-full flex justify-center bg-blue hover:bg-navy text-gray-100 p-3 rounded-full tracking-wide font-semibold shadow-lg cursor-pointer transition ease-in duration-500"
@@ -67,14 +67,14 @@ const rememberMe = !!email;
               Iniciar sesión
             </button>
             
-            <hr class="my-2">
+            <hr class="my-2"> -->
 
             <button
               type="button"
               id="btn-google"
               class="disabled:bg-gray-300 w-full flex justify-center bg-red-500 hover:bg-red-600 text-gray-100 p-3 rounded-full tracking-wide font-semibold shadow-lg cursor-pointer transition ease-in duration-500"
             >
-              Iniciar sesión con Google
+              Ingresar con Google
             </button>
           </div>
         </form>
@@ -89,8 +89,8 @@ import { actions } from "astro:actions";
   import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
   import Swal from "sweetalert2";
 
-  const form = document.querySelector("form") as HTMLFormElement;
-  const btnSubmit = document.querySelector("#btn-submit") as HTMLButtonElement;
+  // const form = document.querySelector("form") as HTMLFormElement;
+  // const btnSubmit = document.querySelector("#btn-submit") as HTMLButtonElement;
 
   const btnSubmitGoogle = document.querySelector("#btn-google") as HTMLButtonElement;
 
@@ -116,7 +116,7 @@ import { actions } from "astro:actions";
       }
 
       btnSubmitGoogle.innerText = "Redireccionando...";
-      window.location.replace("/profile");
+      // window.location.replace("/profile");
       
     } catch (error) { 
       console.log(error)
@@ -124,27 +124,27 @@ import { actions } from "astro:actions";
     }
   })
 
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
+  // form.addEventListener("submit", async (e) => {
+  //   e.preventDefault();
 
-    btnSubmit.setAttribute("disabled", "disable");
+  //   btnSubmit.setAttribute("disabled", "disable");
 
-    const formData = new FormData(form);
+  //   const formData = new FormData(form);
 
-    const { error } = await actions.loginUser(formData);
+  //   const { error } = await actions.loginUser(formData);
 
-    if (error) {
-      Swal.fire({
-        icon: 'error',
-        title: 'Credenciales incorrectas',
-        text: 'Por favor verifica tu email y contraseña',
-      })
-      btnSubmit.removeAttribute("disabled");
-      return;
-    }
+  //   if (error) {
+  //     Swal.fire({
+  //       icon: 'error',
+  //       title: 'Credenciales incorrectas',
+  //       text: 'Por favor verifica tu email y contraseña',
+  //     })
+  //     btnSubmit.removeAttribute("disabled");
+  //     return;
+  //   }
 
-    window.location.replace("/profile");
-  });
+  //   window.location.replace("/profile");
+  // });
 
   
 </script>

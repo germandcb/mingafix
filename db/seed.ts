@@ -7,12 +7,11 @@ import bcrypt from 'bcryptjs'
 export default async function seed() {
 
 	const camiloPerez = {
-		id: UUID(),
-		googleId: '1234567890',
+		id: '1234567890',
 		name: 'Camilo Perez',
 		email: 'camiloprez@gmail.com',
-		password: bcrypt.hashSync('123456'),
-		
+		image: 'https://example.com/image.jpg',
+		// createdAt: new Date(),
 	}
 
 	await db.insert(User).values(camiloPerez);
