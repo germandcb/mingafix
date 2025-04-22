@@ -3,7 +3,7 @@ import { defineMiddleware } from "astro:middleware";
 import { firebase } from "./firebase/config";
 
 const privateRoutes = ["/profile", "/profile/reposts"];
-const notAuthenticatedRoutes = ["/login", "/register", "/home"];
+const notAuthenticatedRoutes = ["/login", "/register", "/profile/*", "/reports/*"];
 
 // `context` and `next` are automatically typed
 export const onRequest = defineMiddleware(({ url, request, locals, redirect }, next) => {

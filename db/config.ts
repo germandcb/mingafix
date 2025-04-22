@@ -2,16 +2,19 @@ import { defineDb, defineTable, column} from 'astro:db';
 
 const User = defineTable({
   columns: {
-    id: column.number({primaryKey: true}),
+    id: column.text({primaryKey: true}),
     googleId: column.text({ unique: true }),
-    name: column.text()
+    name: column.text(),
+    email: column.text({ unique: true }),
+    password: column.text(),
+    createdAt: column.date({default: new Date()}),
   }
 });
 
 const Report = defineTable({
   columns: {
-    reportId: column.number(),
-    UserId: column.number({references: () => User.columns.id}),
+    reportId: column.text(),
+    UserId: column.text({references: () => User.columns.id}),
     title: column.text(),
     location: column.text(),
     description: column.text(),
