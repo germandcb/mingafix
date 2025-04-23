@@ -1,3 +1,4 @@
+import { randomUUID } from 'crypto';
 import * as fs from 'fs';
 import * as path from 'path';
 
@@ -21,7 +22,8 @@ export class SaveImage {
         // Guardar el archivo en el sistema de archivos
         await fs.promises.writeFile(filePath, Buffer.from(await file.arrayBuffer()));
 
+        console.log(fileName)
         // Retornar la URL de la imagen
-        return `./public/uploads/${fileName}`;
+        return fileName.toString();
 }
 }

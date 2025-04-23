@@ -1,7 +1,28 @@
 ---
 import MainLayout from "@/layouts/MainLayout.astro";
+import { db, Report, eq } from "astro:db";
 
+interface Report {
+    reportId: string,
+    UserId: string,
+    title: string,
+    image: string,
+    description: string,
+    location: string,
+    state: string,
+}
 
+interface User { 
+    uid: string;
+    email: string;
+    name: string;
+    avatar: string;
+    emailVerified: boolean;
+}
+
+const user = Astro.locals.user as User || '';
+
+const myReports: Report[] = await db.select().from(Report).where(eq(Report.UserId, user?.uid));
 ---
 
 <MainLayout>
@@ -11,14 +32,21 @@ import MainLayout from "@/layouts/MainLayout.astro";
         <p class="text-center">Haz un seguimiento de como van tus reportes</p>
         
         <section class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-2 ">
-            <article class=" bg-white flex flex-col items-center justify-center rounded-lg shadow-sm hover:shadow-lg transition-all p-4 m-4">
-                <img class="w-full h-40 object-cover rounded-xl" src="/dashboard.jpg" alt="">
-                <h2 class="text-2xl font-bold">Title Here</h2>
-                <button class="bg-blue w-full text-white rounded-full text-xl
-                font-nunito py-2">
-                    Mas detalles
-                </button>
-            </article>
+            {
+                myReports.map( ({reportId, title, image,}) => {
+                    return (
+                    <article class=" bg-white flex flex-col items-center justify-center rounded-lg shadow-sm hover:shadow-lg transition-all p-4 m-4">
+                        <img class="w-full h-40 object-cover rounded-xl" src={`/public/uploads/${image}`} alt="" />
+                        <h2 class="text-2xl font-bold">{title}</h2>
+                        <a href={`/reports/${reportId}`} class="bg-blue text-center w-full text-white rounded-full text-xl
+                        font-nunito py-2">
+                            Mas detalles
+                        </a>
+                    </article>
+                    )
+                })
+            }
+            
         </section>
 
     </main>
