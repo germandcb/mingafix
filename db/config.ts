@@ -12,12 +12,12 @@ const User = defineTable({
 
 const Report = defineTable({
   columns: {
-    reportId: column.text(),
+    reportId: column.text({primaryKey: true}),
     UserId: column.text({references: () => User.columns.id}),
     title: column.text(),
-    location: column.text(),
-    description: column.text(),
     image: column.text(),
+    description: column.text(),
+    location: column.text(),
     state: column.text()
   }
 });

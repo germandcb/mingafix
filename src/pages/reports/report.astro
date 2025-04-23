@@ -4,10 +4,11 @@ import MainLayout from "@/layouts/MainLayout.astro";
 
 <MainLayout>
   <main class="my-10">
-    <h1 class="text-center font-bold text-4xl">Colabora con un causa</h1>
-    <p class="text-center mb-5">¡Únete a nosotros y haz la diferencia!</p>
+    
+    <h1 class="text-center font-bold text-4xl">Haz un reporte</h1>
+    <p class="text-center">Cuentanos brevemente la situación que se esta presentado.</p>
 
-    <div class="flex justify-center self-center z-10">
+    <div class="flex justify-center self-center z-10 mt-5">
       <div class="p-12 bg-white mx-auto rounded-2xl w-100">
         <form class="space-y-5">
           <div class="space-y-2">
@@ -17,7 +18,7 @@ import MainLayout from "@/layouts/MainLayout.astro";
             <input
               class="w-full text-base px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue"
               type="text"
-              name="problem"
+              name="title"
               placeholder="Describe tu problema"
             />
           </div>
@@ -28,7 +29,7 @@ import MainLayout from "@/layouts/MainLayout.astro";
             <input
               class="w-full text-base px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue"
               type="text"
-              name="situation"
+              name="description"
               placeholder="Describe tu situación actual"
             />
           </div>
@@ -37,10 +38,11 @@ import MainLayout from "@/layouts/MainLayout.astro";
               >Imagen de la situación</label
             >
             <input
+              id="file-upload"
               class="w-full text-base px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue"
               type="file"
               name="image"
-              placeholder="URL de la imagen"
+              accept="image/*"
             />
           </div>
           <div class="space-y-2">
@@ -58,7 +60,7 @@ import MainLayout from "@/layouts/MainLayout.astro";
             <button
               type="submit"
               id="btn-submit-report"
-              class="disabled:bg-gray-300 w-full flex justify-center bg-blue hover:bg-navy text-gray-100 p-3 rounded-full tracking-wide font-semibold shadow-lg cursor-pointer transition ease-in duration-500"
+              class="disabled:bg-gray-400 w-full flex justify-center bg-blue hover:bg-navy text-gray-100 p-3 rounded-full tracking-wide font-semibold shadow-lg cursor-pointer transition ease-in duration-500"
             >
               Reportar Problema
             </button>
@@ -68,3 +70,36 @@ import MainLayout from "@/layouts/MainLayout.astro";
     </div>
   </main>
 </MainLayout>
+
+<script>
+  import { actions } from "astro:actions";
+  import Swal from "sweetalert2";
+
+  const form = document.querySelector("form") as HTMLFormElement;
+  const btnSubmitReport = document.querySelector("#btn-submit-report") as HTMLButtonElement;
+
+  form.addEventListener("submit", async (e) => { 
+    e.preventDefault();
+    btnSubmitReport.setAttribute("disabled", "disabled");
+    
+    const formData = new FormData(form);
+
+    // const formValues = Object.fromEntries(formData.entries());
+
+    const { error, data } = await actions.createReport(formData);
+
+    if ( error ) { 
+      Swal.fire({
+        icon: "error",
+        title: "Credenciales incorrectas",
+        text: "Hubo un error al enviar el reporte",
+      });
+      btnSubmitReport.removeAttribute("disabled");
+      return;
+    }
+
+    window.location.href = "/profile/reports";
+    
+  })
+  
+</script>

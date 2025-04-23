@@ -2,8 +2,8 @@ import type { MiddlewareNext } from "astro";
 import { defineMiddleware } from "astro:middleware";
 import { firebase } from "./firebase/config";
 
-const privateRoutes = ["/profile", "/profile/reposts"];
-const notAuthenticatedRoutes = ["/login", "/register", "/profile/*", "/reports/*"];
+const privateRoutes = ["/profile", "/profile/reposts", "/reports/report"];
+const notAuthenticatedRoutes = ["/login", "/register" ];
 
 // `context` and `next` are automatically typed
 export const onRequest = defineMiddleware(({ url, request, locals, redirect }, next) => {
@@ -14,6 +14,7 @@ export const onRequest = defineMiddleware(({ url, request, locals, redirect }, n
     
     if (user) { 
         locals.user = {
+            uid: user.uid,
             email: user.email!,
             name: user.displayName!,
             avatar: user.photoURL ?? '',

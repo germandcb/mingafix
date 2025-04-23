@@ -2,6 +2,7 @@
 /// <reference types="astro/client" />
 
 interface User { 
+    uid: string;
     email: string;
     name: string;
     avatar: string;
