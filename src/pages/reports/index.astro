@@ -1,5 +1,20 @@
 ---
 import MainLayout from "@/layouts/MainLayout.astro";
+import { db, Report } from "astro:db";
+
+interface Report {
+    reportId: string,
+    UserId: string,
+    title: string,
+    image: string,
+    description: string,
+    location: string,
+    state: string,
+}
+
+const allReports: Report[] = await db.select().from(Report);
+
+console.log(allReports);
 ---
 <MainLayout>
     <main class="container my-10">
@@ -8,14 +23,21 @@ import MainLayout from "@/layouts/MainLayout.astro";
         <p class="text-center">¡Únete a nosotros y haz la diferencia!</p>
         
         <section class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-2 ">
-            <article class=" bg-white flex flex-col items-center justify-center rounded-lg shadow-sm hover:shadow-lg transition-all p-4 m-4">
-                <img class="w-full h-40 object-cover rounded-xl" src="/dashboard.jpg" alt="">
-                <h2 class="text-2xl font-bold">Title Here</h2>
-                <button class="bg-blue w-full text-white rounded-full text-xl
-                font-nunito py-2">
-                    Mas detalles
-                </button>
-            </article>
+
+            {
+                allReports.map( ({reportId, title, image,}) => {
+                    return (
+                    <article class=" bg-white flex flex-col items-center justify-center rounded-lg shadow-sm hover:shadow-lg transition-all p-4 m-4">
+                        <img class="w-full h-40 object-cover rounded-xl" src={`/public/uploads/${image}`} alt="" />
+                        <h2 class="text-2xl font-bold">{title}</h2>
+                        <a href={`/reports/${reportId}`} class="bg-blue text-center w-full text-white rounded-full text-xl
+                        font-nunito py-2">
+                            Mas detalles
+                        </a>
+                    </article>
+                    )
+                })
+            }
         </section>
 
     </main>
