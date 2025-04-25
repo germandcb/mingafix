@@ -17,7 +17,7 @@ const { avatar, email, emailVerified, name } = user;
     class="h-[600px] w-full flex flex-row justify-center items-center"
   >
     <div class="card w-96 mx-auto bg-white shadow-xl hover:shadow">
-      {
+      <!-- {
         avatar ? (
           <img
             class="w-32 mx-auto rounded-full -mt-20 border-8 border-white"
@@ -25,13 +25,15 @@ const { avatar, email, emailVerified, name } = user;
             alt="Imagen de perfil"
           />
         ) : (
-          <div class="w-32 h-32 mx-auto rounded-full -mt-20 border-8 border-white bg-gray-300 flex justify-center items-center">
-            <span class="text-white text-3xl font-extrabold">
-              {name!.substring(0, 2)}
-            </span>
-          </div>
+          
         )
-      }
+      } -->
+
+      <div class="w-32 h-32 mx-auto rounded-full -mt-20 border-8 border-white bg-gray-300 flex justify-center items-center">
+        <span class="text-white text-3xl font-extrabold">
+          {name!.substring(0, 2)}
+        </span>
+      </div>
 
       <div class="text-center mt-2 text-3xl font-medium">{name}</div>
       <div class="text-center mt-2 font-light text-sm">{email}</div>

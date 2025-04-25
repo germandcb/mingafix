@@ -1,5 +1,5 @@
 import { registerUser, logout, loginUser, loginWithGoogle } from "./auth";
-import { createReport } from "./reports";
+import { createReport, getReportsById } from "./reports";
 
 export const server = {
     // acciones de autenticacion
@@ -9,5 +9,6 @@ export const server = {
     loginWithGoogle,
 
     // Acciones de reportes
-    createReport
+    createReport,
+    getReportsById
 }

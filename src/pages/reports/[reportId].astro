@@ -1,0 +1,32 @@
+---
+import MainLayout from "@/layouts/MainLayout.astro";
+import { db, eq, Report } from "astro:db";
+
+const { reportId } = Astro.params;
+
+interface Report {
+    reportId: string,
+    UserId: string,
+    title: string,
+    image: string,
+    description: string,
+    location: string,
+    state: string,
+}
+
+const report: Report[] = await db.select().from(Report).where(eq(Report.reportId, String(reportId)));
+
+const { title, image, description, location, state } = report[0];
+---
+
+<MainLayout>
+    <main class="container my-10 bg-white py-10 px-8 rounded-xl flex flex-col items-center">
+        <a href="/reports"  class="mb-8 font-bold border border-black rounded-full px-4 py-2"> Regresar </a>
+        <h1 class="text-5xl font-extrabold  text-center">{title}</h1>
+        <img class="w-2/3 my-5" src={`/public/uploads/${image}`} alt={title} />
+        <h2 class="text-3xl font-extrabold">Descripción</h2>
+        <p class="">{description}</p>
+        <h2 class="text-3xl font-extrabold">Ubicación</h2>
+        <p>{location}</p>
+    </main>
+</MainLayout>
