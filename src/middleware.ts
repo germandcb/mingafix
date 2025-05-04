@@ -1,6 +1,6 @@
 import type { MiddlewareNext } from "astro";
 import { defineMiddleware } from "astro:middleware";
-import { firebase } from "./firebase/config";
+import { firebase } from "./firebase/config.js";
 
 const privateRoutes = ["/profile", "/profile/reposts", "/reports/report"];
 const notAuthenticatedRoutes = ["/login", "/register" ];

@@ -7,12 +7,12 @@ import { getAuth } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyAx5F0QQHS2vuis3EOpPFbqx-lmJoW7_bA",
-    authDomain: "mingafix-ff707.firebaseapp.com",
-    projectId: "mingafix-ff707",
-    storageBucket: "mingafix-ff707.firebasestorage.app",
-    messagingSenderId: "969854103666",
-    appId: "1:969854103666:web:fb6156bb3fc1656e8fd2eb"
+    apiKey: import.meta.env.PUBLIC_API_KEY,
+    authDomain: import.meta.env.PUBLIC_AUTH_DOMAIN,
+    projectId: import.meta.env.PUBLIC_PROJECT_ID,
+    storageBucket: import.meta.env.PUBLIC_STORAGE_BUCKET,
+    messagingSenderId: import.meta.env.PUBLIC_MESSAGING_SENDER_ID,
+    appId: import.meta.env.PUBLIC_APP_ID,
 };
 
 // Initialize Firebase
