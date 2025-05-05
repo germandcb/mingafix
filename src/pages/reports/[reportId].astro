@@ -20,16 +20,30 @@ const { title, image, description, location } = data?.report || {};
 ---
 
 <MainLayout>
-    <main class="container my-10 bg-white py-10 px-8 rounded-xl flex flex-col items-center">
-        <a href="/reports"  class="mb-8 group border-navy border rounded-full px-4 py-2 flex text-navy items-center hover:bg-navy hover:text-white transition-all">
-            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none" stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-left stroke-navy group-hover:stroke-white transition-all"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l14 0" /><path d="M5 12l6 6" /><path d="M5 12l6 -6" /></svg>
-            Regresar 
-        </a>
-        <h1 class="text-5xl font-extrabold  text-center">{title}</h1>
-        <img class="w-2/3 my-5" src={`/public/uploads/${image}`} alt={title} />
-        <h2 class="text-3xl font-extrabold">Descripción</h2>
-        <p class="">{description}</p>
-        <h2 class="text-3xl font-extrabold">Ubicación</h2>
-        <p>{location}</p>
+    <main class="mx-auto max-w-3xl my-10 bg-white py-10 px-8 rounded-xl flex flex-col items-start">
+        <div class="flex flex-row items-center gap-5">
+            <a href="/reports"  class="mb-8 group border-navy border rounded-full px-4 py-2 flex text-navy items-center hover:bg-navy hover:text-white transition-all">
+                <svg  xmlns="http://www.w3.org/2000/svg"  width="18"  height="18"  viewBox="0 0 24 24"  fill="none" stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-left stroke-navy group-hover:stroke-white transition-all"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l14 0" /><path d="M5 12l6 6" /><path d="M5 12l6 -6" /></svg>
+                Regresar 
+            </a>
+            <button id="postularme" class="mb-8 group border-navy border rounded-full px-4 py-2 flex text-navy items-center hover:bg-navy hover:text-white transition-all">
+                <!-- <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none" stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-left stroke-navy group-hover:stroke-white transition-all"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l14 0" /><path d="M5 12l6 6" /><path d="M5 12l6 -6" /></svg> -->
+                Postularme
+            </button>
+        </div>
+        <h1 class="text-4xl font-extrabold  text-center">{title}</h1>
+        <img class="w-full my-5" src={`/public/uploads/${image}`} alt={title} />
+        <h2 class="text-4xl font-extrabold">Descripción</h2>
+        <p class="mt-2">{description}</p>
+        <h2 class="text-4xl font-extrabold mt-5">Ubicación</h2>
+        <p class="mt-2">{location}</p>
     </main>
 </MainLayout>
+
+<script>
+    const postularme = document.getElementById('postularme') as HTMLButtonElement;
+    postularme.addEventListener('click', () => {
+        alert('Postulando...');
+        // Aquí puedes agregar la lógica para postularte al reporte
+    });
+</script>

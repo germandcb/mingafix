@@ -22,6 +22,14 @@ const Report = defineTable({
   }
 });
 
+const UsersReports = defineTable({
+  columns: {
+    id: column.text({primaryKey: true}),
+    reportId: column.text({references: () => Report.columns.reportId}),
+    UserId: column.text({references: () => User.columns.id}),
+  }
+})
+
 export default defineDb({
-  tables: {User, Report}
+  tables: {User, Report, UsersReports}
 });

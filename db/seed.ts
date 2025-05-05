@@ -14,7 +14,7 @@ export default async function seed() {
 		// createdAt: new Date(),
 	}
 
-	await db.insert(User).values(camiloPerez);
+	// await db.insert(User).values(camiloPerez);
 
 	console.log('Example seed data inserted into the User table.');
 	// TODO
