@@ -1,6 +1,6 @@
 ---
+import { getReportsById } from "@/actions/reports";
 import MainLayout from "@/layouts/MainLayout.astro";
-import { db, eq, Report } from "astro:db";
 
 const { reportId } = Astro.params;
 
@@ -14,14 +14,17 @@ interface Report {
     state: string,
 }
 
-const report: Report[] = await db.select().from(Report).where(eq(Report.reportId, String(reportId)));
+const { data, error } = await Astro.callAction(getReportsById, String(reportId));
 
-const { title, image, description, location, state } = report[0];
+const { title, image, description, location } = data?.report || {};
 ---
 
 <MainLayout>
     <main class="container my-10 bg-white py-10 px-8 rounded-xl flex flex-col items-center">
-        <a href="/reports"  class="mb-8 font-bold border border-black rounded-full px-4 py-2"> Regresar </a>
+        <a href="/reports"  class="mb-8 group border-navy border rounded-full px-4 py-2 flex text-navy items-center hover:bg-navy hover:text-white transition-all">
+            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none" stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-left stroke-navy group-hover:stroke-white transition-all"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l14 0" /><path d="M5 12l6 6" /><path d="M5 12l6 -6" /></svg>
+            Regresar 
+        </a>
         <h1 class="text-5xl font-extrabold  text-center">{title}</h1>
         <img class="w-2/3 my-5" src={`/public/uploads/${image}`} alt={title} />
         <h2 class="text-3xl font-extrabold">Descripción</h2>

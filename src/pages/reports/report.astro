@@ -19,18 +19,17 @@ import MainLayout from "@/layouts/MainLayout.astro";
               class="w-full text-base px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue"
               type="text"
               name="title"
-              placeholder="Describe tu problema"
+              placeholder="Ejemplo: Via bloqueada"
             />
           </div>
           <div class="space-y-2">
             <label class="text-sm font-medium text-gray-700 tracking-wide"
               >Describe la situación actual</label
             >
-            <input
+            <textarea
               class="w-full text-base px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue"
-              type="text"
               name="description"
-              placeholder="Describe tu situación actual"
+              placeholder="Ejemplo: La via se encuentra bloqueada por un derrumbe."
             />
           </div>
           <div class="space-y-2">
@@ -53,7 +52,7 @@ import MainLayout from "@/layouts/MainLayout.astro";
               class="w-full text-base px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue"
               type="text"
               name="location"
-              placeholder="kr 1234 # 45-67"
+              placeholder="Ejemplo: Carrera 10 # 20 - 30"
             />
           </div>
           <div>
@@ -91,8 +90,8 @@ import MainLayout from "@/layouts/MainLayout.astro";
     if ( error ) { 
       Swal.fire({
         icon: "error",
-        title: "Credenciales incorrectas",
-        text: "Hubo un error al enviar el reporte",
+        title: "Error",
+        text: "Valida que estes enviadon los datos correctamente.",
       });
       btnSubmitReport.removeAttribute("disabled");
       return;
